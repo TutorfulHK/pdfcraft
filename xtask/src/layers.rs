@@ -87,6 +87,8 @@ pub const TABLE: &[(&str, Class)] = &[
     ("pdfcraft", Class::Exempt),
     ("cli", Class::Exempt),
     ("web", Class::Exempt),
+    // Lean headless WebAssembly library for PDF byte jobs (packaging/wasm).
+    ("wasm", Class::Exempt),
     ("xtask", Class::Exempt),
 ];
 

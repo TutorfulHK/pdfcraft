@@ -75,7 +75,12 @@ pub fn wasm(_: &[String]) -> anyhow::Result<()> {
     let crates = layers::from_metadata(&metadata()?).map_err(|e| anyhow!(e))?;
     let set: Vec<String> = crates
         .into_iter()
-        .filter(|c| matches!(layers::classify(&c.name), Some(layers::Class::Layer(_) | layers::Class::Standalone(_))))
+        .filter(|c| match layers::classify(&c.name) {
+            Some(layers::Class::Layer(_) | layers::Class::Standalone(_)) => true,
+            // The headless wasm library exists to build for wasm32.
+            Some(layers::Class::Exempt) => layers::short_name(&c.name) == "wasm",
+            _ => false,
+        })
         .map(|c| c.name)
         .collect();
     let mut failed = Vec::new();
