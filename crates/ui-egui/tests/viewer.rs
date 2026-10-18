@@ -108,7 +108,9 @@ fn view_history_select_all_and_find_options() {
     h.state_mut().views[0].open_find();
     h.state_mut().views[0].find.as_mut().unwrap().query = "page".into();
     h.state_mut().views[0].rerun_find();
-    for _ in 0..60 {
+    // Find runs in the background; allow slow (emulated) CI runners up to 10 s.
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(10);
+    while std::time::Instant::now() < deadline {
         h.run_steps(2);
         std::thread::sleep(std::time::Duration::from_millis(5));
         if h.state().views[0].find.as_ref().unwrap().matches.len() >= 15 {

@@ -1,0 +1,29 @@
+{
+  "name": "@tutorfulhk/pdfcraft-wasm",
+  "version": "0.0.0-template",
+  "description": "PdfCraft as a lean headless WebAssembly library: merge, extract pages, images to PDF, compress, ink annotations and page overlays.",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TutorfulHK/pdfcraft.git",
+    "directory": "crates/wasm"
+  },
+  "type": "module",
+  "main": "pdfcraft_wasm.js",
+  "module": "pdfcraft_wasm.js",
+  "types": "pdfcraft_wasm.d.ts",
+  "files": [
+    "pdfcraft_wasm.js",
+    "pdfcraft_wasm.d.ts",
+    "pdfcraft_wasm_bg.wasm",
+    "pdfcraft_wasm_bg.wasm.d.ts",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE",
+    "NOTICE"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
+}

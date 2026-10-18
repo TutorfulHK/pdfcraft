@@ -41,6 +41,12 @@ ignore = [
     # private-key operations use aws-lc-rs on native targets and are refused in the browser
     # (ADR-0009). Revisit when a fixed `rsa` ships.
     { id = "RUSTSEC-2023-0071", reason = "rsa is used for verification only (ADR-0009)" },
+    # zbus 5's helper crates were folded into zbus 6 (RUSTSEC-2026-0370/0371/0372, "unmaintained",
+    # no security issue). They arrive only through egui's accessibility stack (accesskit_unix);
+    # revisit when eframe moves to zbus 6.
+    { id = "RUSTSEC-2026-0370", reason = "zvariant via eframe/accesskit; folded into zbus 6" },
+    { id = "RUSTSEC-2026-0371", reason = "zbus_names via eframe/accesskit; folded into zbus 6" },
+    { id = "RUSTSEC-2026-0372", reason = "zvariant_derive via eframe/accesskit; folded into zbus 6" },
 ]
 
 # egui's default UI fonts (Ubuntu-Light, Hack, emoji-icon-font): font licences on the AGENTS.md
